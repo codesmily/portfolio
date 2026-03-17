@@ -14,6 +14,8 @@
   --purple: #8b5cf6;
   --pink: #d946ef;
   --bg: #0a0614;
+  --glass-bg: rgba(255,255,255,0.07);
+  --glass-blur: blur(15px);
 }
 
 html { scroll-behavior: smooth; }
@@ -22,6 +24,7 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: #f5f3ff;
+  line-height: 1.6;
 }
 
 /* NAVBAR */
@@ -59,17 +62,19 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
   padding-top: 80px;
 }
 
 .hero h1 {
   font-weight: 800;
-  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem);
 }
 
 .hero p {
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin-top: 1rem;
 }
 
 .btn-main {
@@ -78,9 +83,15 @@ body {
   padding: 12px 30px;
   border: none;
   color: white;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
-/* ICONES */
+.btn-main:hover {
+  transform: scale(1.05);
+}
+
+/* SOCIAL ICONS */
 .social-icon {
   font-size: 2.5rem;
   width: 55px;
@@ -96,57 +107,53 @@ body {
 
 .social-icon:hover {
   color: white;
-  background: linear-gradient(135deg, #8b5cf6, #d946ef);
+  background: linear-gradient(135deg, var(--purple), var(--pink));
   transform: scale(1.2);
   box-shadow: 0 0 20px rgba(217,70,239,0.7);
 }
 
-.social-icon:active {
-  transform: scale(0.95);
-}
+.social-icon:active { transform: scale(0.95); }
 
 /* SECTIONS */
-section {
-  padding: 70px 0;
-  scroll-margin-top: 90px;
-}
+section { padding: 80px 0; scroll-margin-top: 90px; }
 
-.title {
-  text-align: center;
-  font-weight: 800;
-  margin-bottom: 40px;
-}
+.title { text-align: center; font-weight: 800; margin-bottom: 50px; }
 
 .glass {
-  background: rgba(255,255,255,0.07);
+  background: var(--glass-bg);
   border-radius: 18px;
-  padding: 25px;
-  backdrop-filter: blur(15px);
+  padding: 30px;
+  backdrop-filter: var(--glass-blur);
+  transition: 0.3s;
 }
+
+.glass:hover { transform: translateY(-3px); }
 
 .skill {
   display: inline-block;
-  padding: 8px 14px;
+  padding: 10px 16px;
   margin: 5px;
   border-radius: 999px;
   background: rgba(217,70,239,0.2);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .project {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 12px;
+  background: var(--glass-bg);
+  padding: 25px;
+  border-radius: 14px;
   height: 100%;
   transition: 0.3s;
 }
 
-.project:hover { transform: translateY(-5px); }
+.project:hover { transform: translateY(-5px); box-shadow: 0 4px 20px rgba(217,70,239,0.3); }
 
 footer {
   text-align: center;
   padding: 20px;
   background: #05030a;
+  margin-top: 50px;
 }
 
 /* MOBILE */
@@ -154,19 +161,15 @@ footer {
   .navbar-nav {
     text-align: center;
     gap: 10px;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     padding: 20px;
     border-radius: 12px;
     margin-top: 10px;
   }
 
-  .hero {
-    padding-top: 100px;
-  }
-
-  .glass {
-    padding: 20px;
-  }
+  .hero { padding-top: 100px; }
+  .glass { padding: 20px; }
+  .project { padding: 20px; }
 }
 </style>
 </head>
@@ -176,7 +179,6 @@ footer {
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <span class="navbar-brand text-white fw-bold">K.</span>
-
     <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
       <i class="bi bi-list fs-1 text-white"></i>
     </button>
@@ -197,11 +199,7 @@ footer {
 <section class="hero">
   <div class="container">
     <h1>Kamily da Silva Pereira Cavalcante</h1>
-
-    <p class="mt-3">
-      Trabalho com dados, sistemas e automação. Tenho interesse em transformar problemas em soluções usando tecnologia.
-    </p>
-
+    <p>Transformo dados e sistemas em soluções práticas e inovadoras.</p>
     <div class="mt-4 d-flex justify-content-center flex-wrap gap-3">
       <a href="#contato" class="btn btn-main">Falar comigo</a>
       <a href="curriculo-kamily.pdf" download class="btn btn-outline-light">Baixar currículo</a>
@@ -214,9 +212,10 @@ footer {
   <div class="container">
     <h2 class="title">Sobre</h2>
     <div class="glass">
-      <p>Tenho 19 anos e moro em Pindamonhangaba (SP).</p>
-      <p>Formada em Desenvolvimento de Sistemas (ETEC) e cursando ADS (FIAP).</p>
-      <p>Busco oportunidade como Analista de Dados ou Sistemas.</p>
+      <p>Sou Kamily da Silva Pereira Cavalcante, 19 anos, residente em Pindamonhangaba (SP).</p>
+      <p>Formada em Desenvolvimento de Sistemas pelo Ensino Técnico e Análise e Desenvolvimento de Sistemas (ADS) na FIAP.</p>
+      <p>Busco oportunidades em desenvolvimento de sistemas, análise de dados e automação de processos, aplicando habilidades técnicas e interpessoais para soluções práticas e eficientes.</p>
+      <p>Idiomas: Inglês Avançado e Espanhol Básico.</p>
     </div>
   </div>
 </section>
@@ -225,58 +224,73 @@ footer {
   <div class="container">
     <h2 class="title">Experiência</h2>
     <div class="glass">
-      <h5>Estagiária em Sistemas (RH)</h5>
+      <h5>Estagiária em Sistemas (RH) - Tenaris</h5>
       <ul>
-        <li>SAP, TOTVS Protheus e Ronda</li>
-        <li>SQL Oracle</li>
-        <li>APIs com Python</li>
-        <li>Power BI</li>
-        <li>Automação</li>
+        <li>Consutava dados <strong>SQL Oracle</strong> para análise de dados de funcionários e processos internos.</li>
+        <li>Automatizava tarefas rotineiras usando <strong>Python</strong> e <strong>APIs</strong> para integração de sistemas.</li>
+        <li>Auxiliava na gestão e criação de dashboards em <strong>Power BI</strong> para apresentar métricas de RH e performance.</li>
+        <li>Trabalhava com sistemas corporativos como <strong>SAP, TOTVS Protheus e Ronda</strong>, apoiando processos de folha, ponto e benefícios.</li>
+        <li>Participava da automação de processos internos, simplificando tarefas repetitivas e aumentando eficiência.</li>
+        <li>Colaborava com equipes de RH e TI, garantindo que dados e relatórios fossem precisos e acessíveis.</li>
       </ul>
     </div>
   </div>
 </section>
-
 <section id="skills">
   <div class="container text-center">
-    <h2 class="title">Skills</h2>
+    <h2 class="title">Skills Técnicas</h2>
+    <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+      <span class="skill">SQL Oracle</span>
+      <span class="skill">Python</span>
+      <span class="skill">APIs REST</span>
+      <span class="skill">Power BI</span>
+      <span class="skill">Power Apps</span>
+      <span class="skill">Power Automate</span>
+      <span class="skill">Banco de Dados</span>
+      <span class="skill">Modelagem</span>
+      <span class="skill">Java</span>
+      <span class="skill">HTML/CSS</span>
+    </div>
 
-    <span class="skill">SQL Oracle</span>
-    <span class="skill">Python</span>
-    <span class="skill">APIs REST</span>
-    <span class="skill">Power BI</span>
-    <span class="skill">Power Apps</span>
-    <span class="skill">Power Automate</span>
-    <span class="skill">Banco de Dados</span>
-    <span class="skill">Modelagem</span>
-    <span class="skill">Java</span>
-    <span class="skill">HTML/CSS</span>
+    <!-- Skills interpessoais específicas -->
+    <h2 class="title mt-5">Habilidades Interpessoais</h2>
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+      <span class="skill">Colaboração em equipe multidisciplinar</span>
+      <span class="skill">Comunicação clara com áreas</span>
+      <span class="skill">Organização de relatórios e dashboards</span>
+      <span class="skill">Proatividade na automação de processos</span>
+      <span class="skill">Capacidade de aprendizado rápido de novas ferramentas</span>
+      <span class="skill">Resolução de problemas de forma analítica</span>
+      <span class="skill">Atenção aos detalhes em dados e relatórios</span>
+    </div>
   </div>
 </section>
 
 <section id="projetos">
   <div class="container">
     <h2 class="title">Projetos</h2>
-
     <div class="row g-4">
       <div class="col-12 col-md-6 col-lg-4">
         <div class="project">
-          <h5>Carolices</h5>
-          <p>Site com foco em design.</p>
+          <h5>Inclusão</h5>
+          <p>Projeto focado em inclusão e diversidade corporativa:</p>
+          <ul>
+            <li>Monitoramento e geração de relatórios sobre diversidade.</li>
+            <li>Automação de recrutamento priorizando diversidade.</li>
+            <li>Controle de treinamentos para combater discriminação.</li>
+          </ul>
         </div>
       </div>
-
       <div class="col-12 col-md-6 col-lg-4">
         <div class="project">
           <h5>Essentia</h5>
-          <p>Gestão de processos NR-01.</p>
+          <p>App para gestão de processos NR-01, apoiando funcionários na execução e direcionamento de tarefas.</p>
         </div>
       </div>
-
       <div class="col-12 col-md-6 col-lg-4">
         <div class="project">
           <h5>Tempo de Permanência</h5>
-          <p>Análise de dados.</p>
+          <p>Análise de dados internos realizada durante estágio.</p>
         </div>
       </div>
     </div>
@@ -286,15 +300,13 @@ footer {
 <section id="contato">
   <div class="container text-center">
     <h2 class="title">Contato</h2>
-
-    <p>kamilydasilva2@gmail.com</p>
-    <p>(12) 99643-1055</p>
+    <p>Email: <a href="mailto:kamilydasilva2@gmail.com">kamilydasilva2@gmail.com</a></p>
+    <p>Telefone: <a href="tel:+5512996431055">(12) 99643-1055</a></p>
 
     <div class="d-flex justify-content-center gap-4 mt-3">
       <a href="https://linkedin.com/in/kamily-silva-code" target="_blank" class="social-icon">
         <i class="bi bi-linkedin"></i>
       </a>
-
       <a href="https://github.com/codesmily" target="_blank" class="social-icon">
         <i class="bi bi-github"></i>
       </a>
@@ -314,15 +326,12 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-/* fechar menu ao clicar */
 const navLinks = document.querySelectorAll('.nav-link');
 const menu = document.querySelector('.navbar-collapse');
 
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
-    const bsCollapse = new bootstrap.Collapse(menu, {
-      toggle: false
-    });
+    const bsCollapse = new bootstrap.Collapse(menu, { toggle: false });
     bsCollapse.hide();
   });
 });
