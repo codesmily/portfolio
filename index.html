@@ -36,7 +36,6 @@
 
     .nav-link {
       color: #e9d5ff;
-      margin-left: 15px;
       position: relative;
     }
 
@@ -60,9 +59,17 @@
       display: flex;
       align-items: center;
       text-align: center;
+      padding-top: 80px;
     }
 
-    .hero h1 { font-size: 3rem; font-weight: 800; }
+    .hero h1 {
+      font-weight: 800;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+    }
+
+    .hero p {
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    }
 
     .btn-main {
       background: linear-gradient(90deg, var(--purple), var(--pink));
@@ -72,7 +79,7 @@
       color: white;
     }
 
-    section { padding: 90px 0; }
+    section { padding: 70px 0; }
 
     .title {
       text-align: center;
@@ -83,7 +90,7 @@
     .glass {
       background: rgba(255,255,255,0.07);
       border-radius: 18px;
-      padding: 30px;
+      padding: 25px;
       backdrop-filter: blur(15px);
     }
 
@@ -111,6 +118,22 @@
       padding: 20px;
       background: #05030a;
     }
+
+    /* Mobile ajustes */
+    @media (max-width: 768px) {
+      .navbar-nav {
+        text-align: center;
+        gap: 10px;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .glass {
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -120,7 +143,12 @@
   <div class="container">
     <span class="navbar-brand text-white fw-bold">Kamily</span>
 
-    <div class="collapse navbar-collapse show">
+    <!-- botão mobile -->
+    <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <i class="bi bi-list fs-1 text-white"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
         <li><a class="nav-link" href="#sobre">Sobre</a></li>
         <li><a class="nav-link" href="#experiencia">Experiência</a></li>
@@ -142,19 +170,9 @@
     </p>
 
     <div class="mt-4 d-flex justify-content-center flex-wrap gap-3">
-
-      <a href="#contato" class="btn btn-main">
-        Falar comigo
-      </a>
-
-      <a href="curriculo-kamily.pdf" download class="btn btn-outline-light">
-        Baixar currículo
-      </a>
-
-      <a href="curriculo-kamily.pdf" target="_blank" class="btn btn-outline-light">
-        Ver currículo
-      </a>
-
+      <a href="#contato" class="btn btn-main">Falar comigo</a>
+      <a href="curriculo-kamily.pdf" download class="btn btn-outline-light">Baixar currículo</a>
+      <a href="curriculo-kamily.pdf" target="_blank" class="btn btn-outline-light">Ver currículo</a>
     </div>
   </div>
 </section>
@@ -165,7 +183,7 @@
     <div class="glass">
       <p>Tenho 19 anos e moro em Pindamonhangaba (SP).</p>
       <p>Sou formada em Desenvolvimento de Sistemas pela ETEC e Análise e Desenvolvimento de Sistemas na FIAP.</p>
-      <p>Busco minha primeira oportunidade efetiva como Analista de Dados Júnior ou Analista de Sistemas Júnior.</p>
+      <p>Busco minha primeira oportunidade como Analista de Dados ou Sistemas.</p>
     </div>
   </div>
 </section>
@@ -174,36 +192,13 @@
   <div class="container">
     <h2 class="title">Experiência</h2>
     <div class="glass">
-      <h5>Estagiária em Sistemas (RH) • 1 ano</h5>
+      <h5>Estagiária em Sistemas (RH)</h5>
       <ul>
-        <li>Atuação com sistemas corporativos: SAP, TOTVS Protheus e Ronda Senior</li>
-        <li>Consultas e manipulação de dados com SQL Oracle</li>
-        <li>Desenvolvimento e consumo de APIs em Python</li>
-        <li>Criação de dashboards e relatórios com Power BI</li>
-        <li>Automação de processos com Power Apps e Power Automate</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="formacao">
-  <div class="container">
-    <h2 class="title">Formação</h2>
-    <div class="glass">
-      <p><strong>FIAP</strong> – Tecnólogo em ADS (conclusão 12/2025)</p>
-      <p><strong>ETEC João Gomes de Araújo</strong> – Técnico em Desenvolvimento de Sistemas (2023)</p>
-      <p><strong>Yázigi</strong> – Inglês avançado (2023)</p>
-
-      <hr>
-
-      <p><strong>Complementar:</strong></p>
-      <ul>
-        <li>Excel na prática – Fundação Bradesco</li>
-        <li>Fundamentos do Design Gráfico – Fundação Bradesco</li>
-        <li>Figma básico – Cursae</li>
-        <li>UX e Design Digital – Alura</li>
-        <li>Cybersecurity – FIAP</li>
-        <li>Cloud Fundamentals / Architect – FIAP</li>
+        <li>SAP, TOTVS Protheus e Ronda</li>
+        <li>SQL Oracle</li>
+        <li>APIs com Python</li>
+        <li>Power BI</li>
+        <li>Automação</li>
       </ul>
     </div>
   </div>
@@ -234,28 +229,26 @@
     <h2 class="title">Projetos</h2>
 
     <div class="row g-4">
-
-      <div class="col-md-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="project">
           <h5>Carolices</h5>
-          <p>Site vitrine desenvolvido como TCC, com foco em design e experiência do usuário.</p>
+          <p>Site vitrine com foco em design.</p>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="project">
           <h5>Essentia</h5>
-          <p>Aplicativo voltado à adequação de empresas à NR-01, com foco em gestão e organização de processos.</p>
+          <p>Gestão de processos NR-01.</p>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="project">
           <h5>Tempo de Permanência</h5>
-          <p>Projeto focado em análise de dados e tempo de permanência de usuários em ambientes.</p>
+          <p>Análise de dados de usuários.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -265,12 +258,10 @@
     <h2 class="title">Contato</h2>
 
     <p>kamilydasilva2@gmail.com</p>
-    <p>(12) 99643-1055</p>
-    <p>(12) 98806-1289</p>
 
     <div>
-      <a href="#" class="text-light me-3"><i class="bi bi-linkedin"></i></a>
-      <a href="#" class="text-light"><i class="bi bi-github"></i></a>
+      <a href="www.linkedin.com/in/kamily-silva-code" class="text-light me-3"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/codesmily" class="text-light"><i class="bi bi-github"></i></a>
     </div>
   </div>
 </section>
@@ -279,31 +270,12 @@
   <p>© 2026 Kamily</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      if (scrollY >= sectionTop - 120) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
-    });
   });
 </script>
 
