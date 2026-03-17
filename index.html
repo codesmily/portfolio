@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfólio | Kamily</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kamily | Portfólio</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -11,32 +11,49 @@
 
   <style>
     :root {
-      --purple-main: #8b5cf6;
-      --purple-neon: #d946ef;
-      --bg-dark: #0a0614;
-      --glass: rgba(255,255,255,0.10);
+      --purple: #8b5cf6;
+      --pink: #d946ef;
+      --bg: #0a0614;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background:
-        radial-gradient(circle at 10% 10%, #2a0a5e, transparent 40%),
-        radial-gradient(circle at 90% 20%, #3b0764, transparent 40%),
-        var(--bg-dark);
+      background: var(--bg);
       color: #f5f3ff;
     }
 
     .navbar {
-      background: rgba(10, 6, 20, 0.6);
-      backdrop-filter: blur(18px);
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      transition: 0.3s;
     }
 
-    .navbar-brand {
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--purple-neon), #fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .navbar.scrolled {
+      background: rgba(0,0,0,0.9);
     }
+
+    .nav-link {
+      color: #e9d5ff;
+      margin-left: 15px;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--pink);
+      left: 0;
+      bottom: -4px;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover::after { width: 100%; }
+
+    .nav-link.active { color: var(--pink); }
 
     .hero {
       min-height: 100vh;
@@ -45,70 +62,54 @@
       text-align: center;
     }
 
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 900;
-    }
-
-    .hero span {
-      background: linear-gradient(90deg, var(--purple-neon), var(--purple-main));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .hero h1 { font-size: 3rem; font-weight: 800; }
 
     .btn-main {
-      background: linear-gradient(90deg, var(--purple-main), var(--purple-neon));
-      border: none;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
       border-radius: 50px;
-      padding: 14px 40px;
-      font-weight: 700;
+      padding: 12px 30px;
+      border: none;
+      color: white;
     }
 
-    section { padding: 100px 0; }
+    section { padding: 90px 0; }
 
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 900;
+    .title {
       text-align: center;
-      margin-bottom: 50px;
-      background: linear-gradient(90deg, var(--purple-neon), #fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      margin-bottom: 40px;
     }
 
     .glass {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border-radius: 25px;
-      padding: 40px;
-      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 30px;
+      backdrop-filter: blur(15px);
     }
 
     .skill {
       display: inline-block;
-      padding: 10px 20px;
-      margin: 6px;
+      padding: 8px 14px;
+      margin: 5px;
       border-radius: 999px;
-      background: rgba(217,70,239,0.3);
+      background: rgba(217,70,239,0.2);
+      font-size: 0.85rem;
     }
 
-    .project-card {
-      background: rgba(217,70,239,0.1);
-      border-radius: 20px;
-      padding: 30px;
+    .project {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
       height: 100%;
+      transition: 0.3s;
     }
 
-    .contact a {
-      font-size: 2rem;
-      margin: 10px;
-      color: #d946ef;
-    }
+    .project:hover { transform: translateY(-5px); }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: #080311;
+      background: #05030a;
     }
   </style>
 </head>
@@ -117,15 +118,16 @@
 
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Kamily</a>
-    <div class="collapse navbar-collapse">
+    <span class="navbar-brand text-white fw-bold">Kamily</span>
+
+    <div class="collapse navbar-collapse show">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experiencia">Experiência</a></li>
-        <li class="nav-item"><a class="nav-link" href="#formacao">Formação</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        <li><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li><a class="nav-link" href="#experiencia">Experiência</a></li>
+        <li><a class="nav-link" href="#formacao">Formação</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#projetos">Projetos</a></li>
+        <li><a class="nav-link" href="#contato">Contato</a></li>
       </ul>
     </div>
   </div>
@@ -133,32 +135,52 @@
 
 <section class="hero">
   <div class="container">
-    <h1>Oi, eu sou <span>Kamily</span></h1>
-    <p>Dados • Sistemas • Python • SQL • BI</p>
-    <a href="#contato" class="btn btn-main mt-3">Contato</a>
+    <h1>Kamily da Silva Pereira Cavalcante</h1>
+
+    <p class="mt-3">
+      Trabalho com dados, sistemas e automação. Tenho interesse em entender problemas e transformar em soluções práticas usando tecnologia.
+    </p>
+
+    <div class="mt-4 d-flex justify-content-center flex-wrap gap-3">
+
+      <a href="#contato" class="btn btn-main">
+        Falar comigo
+      </a>
+
+      <a href="curriculo-kamily.pdf" download class="btn btn-outline-light">
+        Baixar currículo
+      </a>
+
+      <a href="curriculo-kamily.pdf" target="_blank" class="btn btn-outline-light">
+        Ver currículo
+      </a>
+
+    </div>
   </div>
 </section>
 
 <section id="sobre">
   <div class="container">
-    <h2 class="section-title">Sobre</h2>
+    <h2 class="title">Sobre</h2>
     <div class="glass">
-      <p>Estudante de ADS na FIAP e estagiária em sistemas de RH.</p>
-      <p>Foco em dados, automação e soluções tecnológicas.</p>
+      <p>Tenho 19 anos e moro em Pindamonhangaba (SP).</p>
+      <p>Sou formada em Desenvolvimento de Sistemas pela ETEC e Análise e Desenvolvimento de Sistemas na FIAP.</p>
+      <p>Busco minha primeira oportunidade efetiva como Analista de Dados Júnior ou Analista de Sistemas Júnior.</p>
     </div>
   </div>
 </section>
 
 <section id="experiencia">
   <div class="container">
-    <h2 class="section-title">Experiência</h2>
+    <h2 class="title">Experiência</h2>
     <div class="glass">
-      <h5>Estagiária em Sistemas (RH)</h5>
+      <h5>Estagiária em Sistemas (RH) • 1 ano</h5>
       <ul>
-        <li>Suporte técnico</li>
-        <li>APIs em Python</li>
-        <li>SQL Oracle</li>
-        <li>Power BI</li>
+        <li>Atuação com sistemas corporativos: SAP, TOTVS Protheus e Ronda Senior</li>
+        <li>Consultas e manipulação de dados com SQL Oracle</li>
+        <li>Desenvolvimento e consumo de APIs em Python</li>
+        <li>Criação de dashboards e relatórios com Power BI</li>
+        <li>Automação de processos com Power Apps e Power Automate</li>
       </ul>
     </div>
   </div>
@@ -166,12 +188,22 @@
 
 <section id="formacao">
   <div class="container">
-    <h2 class="section-title">Formação</h2>
+    <h2 class="title">Formação</h2>
     <div class="glass">
+      <p><strong>FIAP</strong> – Tecnólogo em ADS (conclusão 12/2025)</p>
+      <p><strong>ETEC João Gomes de Araújo</strong> – Técnico em Desenvolvimento de Sistemas (2023)</p>
+      <p><strong>Yázigi</strong> – Inglês avançado (2023)</p>
+
+      <hr>
+
+      <p><strong>Complementar:</strong></p>
       <ul>
-        <li>FIAP – ADS</li>
-        <li>ETEC – DS</li>
-        <li>Inglês Avançado</li>
+        <li>Excel na prática – Fundação Bradesco</li>
+        <li>Fundamentos do Design Gráfico – Fundação Bradesco</li>
+        <li>Figma básico – Cursae</li>
+        <li>UX e Design Digital – Alura</li>
+        <li>Cybersecurity – FIAP</li>
+        <li>Cloud Fundamentals / Architect – FIAP</li>
       </ul>
     </div>
   </div>
@@ -179,38 +211,101 @@
 
 <section id="skills">
   <div class="container text-center">
-    <h2 class="section-title">Skills</h2>
-    <span class="skill">SQL</span>
+    <h2 class="title">Skills</h2>
+
+    <span class="skill">SQL Oracle</span>
     <span class="skill">Python</span>
+    <span class="skill">APIs REST</span>
     <span class="skill">Power BI</span>
-    <span class="skill">APIs</span>
+    <span class="skill">Power Apps</span>
+    <span class="skill">Power Automate</span>
+    <span class="skill">Banco de Dados</span>
+    <span class="skill">Modelagem de Dados</span>
+    <span class="skill">POO</span>
+    <span class="skill">Java</span>
+    <span class="skill">HTML/CSS</span>
+    <span class="skill">Bootstrap</span>
+    <span class="skill">UX/UI</span>
   </div>
 </section>
 
 <section id="projetos">
   <div class="container">
-    <h2 class="section-title">Projetos</h2>
-    <div class="row">
-      <div class="col-md-4"><div class="project-card">Carolices</div></div>
-      <div class="col-md-4"><div class="project-card">Essentia</div></div>
-      <div class="col-md-4"><div class="project-card">Tempo de Permanência</div></div>
+    <h2 class="title">Projetos</h2>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="project">
+          <h5>Carolices</h5>
+          <p>Site vitrine desenvolvido como TCC, com foco em design e experiência do usuário.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project">
+          <h5>Essentia</h5>
+          <p>Aplicativo voltado à adequação de empresas à NR-01, com foco em gestão e organização de processos.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project">
+          <h5>Tempo de Permanência</h5>
+          <p>Projeto focado em análise de dados e tempo de permanência de usuários em ambientes.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section id="contato">
   <div class="container text-center">
-    <h2 class="section-title">Contato</h2>
-    <div class="contact">
-      <a href="https://github.com/codesmily"><i class="bi bi-github"></i></a>
-    </div>
+    <h2 class="title">Contato</h2>
+
     <p>kamilydasilva2@gmail.com</p>
+    <p>(12) 99643-1055</p>
+    <p>(12) 98806-1289</p>
+
+    <div>
+      <a href="#" class="text-light me-3"><i class="bi bi-linkedin"></i></a>
+      <a href="#" class="text-light"><i class="bi bi-github"></i></a>
+    </div>
   </div>
 </section>
 
 <footer>
   <p>© 2026 Kamily</p>
 </footer>
+
+<script>
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop - 120) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
